@@ -25,11 +25,11 @@ var Queue = function() {
 
   someInstance.dequeue = function() {
     var deletedValue;
-        let keys = Object.keys(storage);
+    let keys = Object.keys(storage);
     if(keys.length){
       var min = keys.reduce(function(a, b) {
         return Math.min(a, b);
-      }, 20);
+      }, keys[0]);
       deletedValue = storage[min];
       delete storage[min];
     } else {

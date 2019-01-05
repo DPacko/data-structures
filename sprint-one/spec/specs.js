@@ -151,10 +151,10 @@ define([
       });
 
       it('removes the oldest item, after newer items have already been added and removed', function() {
-        queue.enqueue('a');
-        queue.enqueue('b');
-        queue.dequeue();
-        queue.enqueue('c');
+        queue.enqueue('a');  // 0: a
+        queue.enqueue('b'); // 0: a  1: b
+        queue.dequeue();     // 1: b
+        queue.enqueue('c');  // 1: c
         expect(queue.dequeue()).to.equal('b');
       });
     });
