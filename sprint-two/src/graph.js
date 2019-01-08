@@ -89,7 +89,6 @@ Graph.prototype.addEdge = function(fromNode, toNode) {
         found = true;
     }
   }
-  console.log(this);
 };
 
 // Remove an edge between any two specified (by value) nodes.
