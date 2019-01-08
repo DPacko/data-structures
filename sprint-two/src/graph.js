@@ -137,6 +137,13 @@ var Node = function(value) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ addNode: Constant time
+ contains: linear time
+ removeNode: linear time <- assuming we have to find the node before we remove it, otherwise, constant time
+ hasEdge: linear time
+ addEdge: linear time
+ removeEdge: linear time
+ forEachNode: linear time, but we don't know the overall time because it's based on cb's order of complexity
  */
 
 
