@@ -62,9 +62,27 @@ HashTable.prototype.retrieve = function(k) {
 HashTable.prototype.remove = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
   // get the tuple at the index
-    let tuple = this._storage.get(index);
+    //let tuple = this._storage.get(index);
   // set it's value to an empty array
-    this._storage.set(index, []);
+    //this._storage.set(index, []);
+
+    // Modified to handle collisions - use same logic as retrieve, but then remove the tuple instead of updating it
+
+
+    // get the bucket array at the index
+    let bucketArr = this._storage.get(index);
+    // if the bucket array exists
+    if(bucketArr){
+      // iterate through the bucket array to find the key
+      for(let i = 0; i < bucketArr.length; i++){
+        if(bucketArr[i][0] === k){
+      // remove the tuple from the bucket array
+          bucketArr.splice(i, 1);
+        }
+      }
+  }
+
+    // if the bucket array doesn't exist, we do nothing
 };
 
 
