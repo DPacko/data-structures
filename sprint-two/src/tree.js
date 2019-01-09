@@ -1,10 +1,8 @@
 // assuming value is always an integer
-//
 var Tree = function(value) {
   var newTree = {};
   newTree.value = value;
-  // your code here
-  newTree.children = [];  // fix me
+  newTree.children = [];
   _.extend(newTree, treeMethods);
 
   return newTree;
@@ -41,6 +39,23 @@ treeMethods.contains = function(target) {
   return searchTree(this);
 };
 
+// executes callback function on each node.
+treeMethods.everyNode = function(cb){
+  // execute the callback on myself
+
+  var cbOnTree = function(node) {
+      cb(node.value);
+    // recurse through the children
+    // if children array is not empty
+    if (node.children.length > 0) {
+      // loop through children array
+       for (let i = 0; (i < node.children.length); i++) {
+         cbOnTree(node.children[i]);
+       }
+    }
+  }
+  cbOnTree(this);
+}
 
 
 /*

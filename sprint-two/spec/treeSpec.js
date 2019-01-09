@@ -41,4 +41,24 @@ describe('tree', function() {
     expect(tree.contains(8)).to.equal(true);
   });
 
+  // OUR TEST
+
+  it('should execute a callback on every value in a tree using "everyNode"', function() {
+    var array = [];
+    var func = function(value) {
+     if (value !== undefined) {
+      array.push(value);
+     }
+   };
+    tree.addChild(2);
+    tree.addChild(3);
+    tree.addChild(5);
+    tree.children[0].addChild(7);
+    tree.children[1].addChild(8);
+    tree.children[1].addChild(9);
+    tree.everyNode(func);
+    expect(array).to.eql([2, 7, 3, 8, 9, 5]);
+  });
+
+
 });
