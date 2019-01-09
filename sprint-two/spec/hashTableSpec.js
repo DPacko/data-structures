@@ -73,4 +73,12 @@ describe('hashTable', function() {
     hashTable.remove('Mr.');
     expect(hashTable._limit).to.equal(8);
   });
+
+  // OUR TEST:
+  it('should still have other tuples when one tuple is removed', function() {
+    hashTable.insert('Steven', 'Tyler');
+    hashTable.insert('Bob', 'Loblaw');
+    hashTable.remove('Steven');
+    expect(hashTable.retrieve('Bob')).to.equal('Loblaw');
+  });
 });

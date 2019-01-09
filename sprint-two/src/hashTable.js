@@ -6,12 +6,6 @@ var HashTable = function() {
 
 HashTable.prototype.insert = function(k, v) {
   var index = getIndexBelowMaxForKey(k, this._limit);
-  // create the bucket and insert it
-  // let bucket = [];
-  // bucket.push(k);
-  // bucket.push(v); // [k, v]
-  // this._storage.set(index, bucket);
-
   // check to see if there is already something at the index
   let bucketArr = this._storage.get(index);
   if (bucketArr) {
@@ -61,14 +55,7 @@ HashTable.prototype.retrieve = function(k) {
 
 HashTable.prototype.remove = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
-  // get the tuple at the index
-    //let tuple = this._storage.get(index);
-  // set it's value to an empty array
-    //this._storage.set(index, []);
-
     // Modified to handle collisions - use same logic as retrieve, but then remove the tuple instead of updating it
-
-
     // get the bucket array at the index
     let bucketArr = this._storage.get(index);
     // if the bucket array exists
@@ -81,11 +68,8 @@ HashTable.prototype.remove = function(k) {
         }
       }
   }
-
     // if the bucket array doesn't exist, we do nothing
 };
-
-
 
 /*
  * Complexity: What is the time complexity of the above functions?
