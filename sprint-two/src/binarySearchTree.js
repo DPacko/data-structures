@@ -7,32 +7,35 @@ var BinarySearchTree = function(value) {
 
 // add insert method
 BinarySearchTree.prototype.insert = function(val){
-  // compare own value
-  if(this.value !== val){
-    // compare value to node's value,
-    // if less than, then insert to node on left
-    if(this.value > val){
-      // if this.left is null
-      if(this.left === null){
-        // create new BinarySearchTree and assign this.left to it
-        this.left = new BinarySearchTree(val);
-      }
-      // if not
-      else {
-        // call insert func on this.left
-        this.left.insert(val);
-      }
-    } else {
-    // if greater, insert to node on right;
-      // if this.right is null
-      if(this.right === null){
-        // create new BinarySearchTree and assign this.right to it
-        this.right = new BinarySearchTree(val);
-      }
-      // if not
-      else {
-        // call insert func on this.right
-        this.right.insert(val);
+  // check if val is an integer
+  if (this.checkValue(val)) {
+    // compare own value
+    if(this.value !== val){
+      // compare value to node's value,
+      // if less than, then insert to node on left
+      if(this.value > val){
+        // if this.left is null
+        if(this.left === null){
+          // create new BinarySearchTree and assign this.left to it
+          this.left = new BinarySearchTree(val);
+        }
+        // if not
+        else {
+          // call insert func on this.left
+          this.left.insert(val);
+        }
+      } else {
+      // if greater, insert to node on right;
+        // if this.right is null
+        if(this.right === null){
+          // create new BinarySearchTree and assign this.right to it
+          this.right = new BinarySearchTree(val);
+        }
+        // if not
+        else {
+          // call insert func on this.right
+          this.right.insert(val);
+        }
       }
     }
   }
@@ -76,6 +79,12 @@ BinarySearchTree.prototype.depthFirstLog = function(cb){
       // recurse down right
       this.right.depthFirstLog(cb);
     }
+},
+
+// return boolean - true if integer, false if not
+BinarySearchTree.prototype.checkValue = function(val){
+  // Use Number isInteger to check
+  return Number.isInteger(val);
 }
 
 /*

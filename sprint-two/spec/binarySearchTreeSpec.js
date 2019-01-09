@@ -37,4 +37,18 @@ describe('binarySearchTree', function() {
     binarySearchTree.depthFirstLog(func);
     expect(array).to.eql([5, 2, 3, 7]);
   });
+
+  // OUR TEST:
+  // testing to make sure that all values passed in are integers
+    it('should ignore non-integer values', function() {
+    binarySearchTree.insert(2);
+    binarySearchTree.insert('cat');
+    binarySearchTree.insert(7);
+    expect(binarySearchTree.contains(7)).to.equal(true);
+    expect(binarySearchTree.contains('cat')).to.equal(false);
+    expect(binarySearchTree.contains(8)).to.equal(false);
+  });
+
+
+
 });
