@@ -52,4 +52,16 @@ describe('linkedList', function() {
   });
 
   // add more tests here to test the functionality of linkedList
+
+  // OUR TEST
+  it('should return the sum of all values in the linkedList using sumValues function', function() {
+    linkedList.addToTail(4);
+    linkedList.addToTail(5);
+    linkedList.addToTail(7);
+    linkedList.addToTail(9);
+    linkedList.addToTail(3);
+    linkedList.addToTail(1);
+    expect(linkedList.sumValues()).to.equal(29);
+  });
+
 });

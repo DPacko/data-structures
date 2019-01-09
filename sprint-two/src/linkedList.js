@@ -58,6 +58,24 @@ var LinkedList = function() {
     return false;
   };
 
+  list.sumValues = function() {
+    // create return variable
+    let sum = 0;
+    // check to see if the list is not empty
+    if (list.head !== null) {
+      // Create a variable to reference the current node we're checking
+      let current = list.head;
+      // let's go through the list and search
+      while (current !== list.tail) {
+        sum += current.value;
+        // go to the next node
+        current = current.next;
+      }
+      sum += list.tail.value;
+    }
+     return sum;
+  };
+
   return list;
 }
 
