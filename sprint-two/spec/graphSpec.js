@@ -66,6 +66,23 @@ describe('graph', function() {
     expect(graph.hasEdge(2, 5)).to.equal(true);
     expect(graph.hasEdge(1, 5)).to.equal(true);
     expect(graph.hasEdge(3, 5)).to.equal(true);
-    expect(graph.hasEdge(5, 5)).to.equal(true);
+    // Modied this due to our modification - make sure the same node doesn't have an edge to itself
+    expect(graph.hasEdge(5, 5)).to.equal(false);
   });
+
+  // OUR TEST
+
+  it('should not allow edges to be created between the same node', function() {
+    graph.addNode(2);
+    graph.addNode(1);
+    graph.addNode(3);
+    graph.addEdge(3, 2);
+    graph.addEdge(3, 3); // We don't allow this
+    expect(graph.hasEdge(3, 2)).to.equal(true);
+    expect(graph.hasEdge(3, 1)).to.equal(false);
+    expect(graph.hasEdge(3, 3)).to.equal(false);
+  });
+
+
+
 });

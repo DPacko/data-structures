@@ -70,6 +70,10 @@ Graph.prototype.hasEdge = function(fromNode, toNode) {
 
 // Connects two nodes in a graph by adding an edge between them.
 Graph.prototype.addEdge = function(fromNode, toNode) {
+  // if fromNode and toNode are the same, don't do anything
+  if (fromNode === toNode) {
+    return;
+  }
   // loop to find nodes with fromNode and toNode values, assign each to variables
   let from = null;
   let to = null;
